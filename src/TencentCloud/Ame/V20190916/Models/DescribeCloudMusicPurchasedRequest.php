@@ -18,28 +18,20 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeStations请求参数结构体
+ * DescribeCloudMusicPurchased请求参数结构体
  *
- * @method integer getLimit() 获取条数，必须大于0
- * @method void setLimit(integer $Limit) 设置条数，必须大于0
- * @method integer getOffset() 获取offset (Default = 0)，Offset=Offset+Limit
- * @method void setOffset(integer $Offset) 设置offset (Default = 0)，Offset=Offset+Limit
+ * @method string getAuthInfoId() 获取授权项目Id
+ * @method void setAuthInfoId(string $AuthInfoId) 设置授权项目Id
  */
-class DescribeStationsRequest extends AbstractModel
+class DescribeCloudMusicPurchasedRequest extends AbstractModel
 {
     /**
-     * @var integer 条数，必须大于0
+     * @var string 授权项目Id
      */
-    public $Limit;
+    public $AuthInfoId;
 
     /**
-     * @var integer offset (Default = 0)，Offset=Offset+Limit
-     */
-    public $Offset;
-
-    /**
-     * @param integer $Limit 条数，必须大于0
-     * @param integer $Offset offset (Default = 0)，Offset=Offset+Limit
+     * @param string $AuthInfoId 授权项目Id
      */
     function __construct()
     {
@@ -54,12 +46,8 @@ class DescribeStationsRequest extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Limit",$param) and $param["Limit"] !== null) {
-            $this->Limit = $param["Limit"];
-        }
-
-        if (array_key_exists("Offset",$param) and $param["Offset"] !== null) {
-            $this->Offset = $param["Offset"];
+        if (array_key_exists("AuthInfoId",$param) and $param["AuthInfoId"] !== null) {
+            $this->AuthInfoId = $param["AuthInfoId"];
         }
     }
 }

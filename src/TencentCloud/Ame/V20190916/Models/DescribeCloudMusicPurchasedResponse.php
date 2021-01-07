@@ -18,22 +18,22 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribePackages返回参数结构体
+ * DescribeCloudMusicPurchased返回参数结构体
  *
- * @method array getPackages() 获取已购曲库包列表
+ * @method array getMusicOpenDetail() 获取云音乐列表
 注意：此字段可能返回 null，表示取不到有效值。
- * @method void setPackages(array $Packages) 设置已购曲库包列表
+ * @method void setMusicOpenDetail(array $MusicOpenDetail) 设置云音乐列表
 注意：此字段可能返回 null，表示取不到有效值。
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribePackagesResponse extends AbstractModel
+class DescribeCloudMusicPurchasedResponse extends AbstractModel
 {
     /**
-     * @var array 已购曲库包列表
+     * @var array 云音乐列表
 注意：此字段可能返回 null，表示取不到有效值。
      */
-    public $Packages;
+    public $MusicOpenDetail;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -41,7 +41,7 @@ class DescribePackagesResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $Packages 已购曲库包列表
+     * @param array $MusicOpenDetail 云音乐列表
 注意：此字段可能返回 null，表示取不到有效值。
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
@@ -58,12 +58,12 @@ class DescribePackagesResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Packages",$param) and $param["Packages"] !== null) {
-            $this->Packages = [];
-            foreach ($param["Packages"] as $key => $value){
-                $obj = new Package();
+        if (array_key_exists("MusicOpenDetail",$param) and $param["MusicOpenDetail"] !== null) {
+            $this->MusicOpenDetail = [];
+            foreach ($param["MusicOpenDetail"] as $key => $value){
+                $obj = new MusicOpenDetail();
                 $obj->deserialize($value);
-                array_push($this->Packages, $obj);
+                array_push($this->MusicOpenDetail, $obj);
             }
         }
 

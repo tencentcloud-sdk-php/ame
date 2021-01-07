@@ -18,28 +18,28 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeStations请求参数结构体
+ * DescribeCloudMusic请求参数结构体
  *
- * @method integer getLimit() 获取条数，必须大于0
- * @method void setLimit(integer $Limit) 设置条数，必须大于0
- * @method integer getOffset() 获取offset (Default = 0)，Offset=Offset+Limit
- * @method void setOffset(integer $Offset) 设置offset (Default = 0)，Offset=Offset+Limit
+ * @method string getMusicId() 获取歌曲Id
+ * @method void setMusicId(string $MusicId) 设置歌曲Id
+ * @method string getMusicType() 获取歌曲类型，请填写：MP3-320K-FTD
+ * @method void setMusicType(string $MusicType) 设置歌曲类型，请填写：MP3-320K-FTD
  */
-class DescribeStationsRequest extends AbstractModel
+class DescribeCloudMusicRequest extends AbstractModel
 {
     /**
-     * @var integer 条数，必须大于0
+     * @var string 歌曲Id
      */
-    public $Limit;
+    public $MusicId;
 
     /**
-     * @var integer offset (Default = 0)，Offset=Offset+Limit
+     * @var string 歌曲类型，请填写：MP3-320K-FTD
      */
-    public $Offset;
+    public $MusicType;
 
     /**
-     * @param integer $Limit 条数，必须大于0
-     * @param integer $Offset offset (Default = 0)，Offset=Offset+Limit
+     * @param string $MusicId 歌曲Id
+     * @param string $MusicType 歌曲类型，请填写：MP3-320K-FTD
      */
     function __construct()
     {
@@ -54,12 +54,12 @@ class DescribeStationsRequest extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Limit",$param) and $param["Limit"] !== null) {
-            $this->Limit = $param["Limit"];
+        if (array_key_exists("MusicId",$param) and $param["MusicId"] !== null) {
+            $this->MusicId = $param["MusicId"];
         }
 
-        if (array_key_exists("Offset",$param) and $param["Offset"] !== null) {
-            $this->Offset = $param["Offset"];
+        if (array_key_exists("MusicType",$param) and $param["MusicType"] !== null) {
+            $this->MusicType = $param["MusicType"];
         }
     }
 }

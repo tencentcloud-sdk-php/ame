@@ -18,22 +18,26 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribePackages返回参数结构体
+ * DescribeAuthInfo返回参数结构体
  *
- * @method array getPackages() 获取已购曲库包列表
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setPackages(array $Packages) 设置已购曲库包列表
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getAuthInfo() 获取授权项目列表
+ * @method void setAuthInfo(array $AuthInfo) 设置授权项目列表
+ * @method integer getTotalCount() 获取总数
+ * @method void setTotalCount(integer $TotalCount) 设置总数
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribePackagesResponse extends AbstractModel
+class DescribeAuthInfoResponse extends AbstractModel
 {
     /**
-     * @var array 已购曲库包列表
-注意：此字段可能返回 null，表示取不到有效值。
+     * @var array 授权项目列表
      */
-    public $Packages;
+    public $AuthInfo;
+
+    /**
+     * @var integer 总数
+     */
+    public $TotalCount;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -41,8 +45,8 @@ class DescribePackagesResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param array $Packages 已购曲库包列表
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $AuthInfo 授权项目列表
+     * @param integer $TotalCount 总数
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -58,13 +62,17 @@ class DescribePackagesResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Packages",$param) and $param["Packages"] !== null) {
-            $this->Packages = [];
-            foreach ($param["Packages"] as $key => $value){
-                $obj = new Package();
+        if (array_key_exists("AuthInfo",$param) and $param["AuthInfo"] !== null) {
+            $this->AuthInfo = [];
+            foreach ($param["AuthInfo"] as $key => $value){
+                $obj = new AuthInfo();
                 $obj->deserialize($value);
-                array_push($this->Packages, $obj);
+                array_push($this->AuthInfo, $obj);
             }
+        }
+
+        if (array_key_exists("TotalCount",$param) and $param["TotalCount"] !== null) {
+            $this->TotalCount = $param["TotalCount"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

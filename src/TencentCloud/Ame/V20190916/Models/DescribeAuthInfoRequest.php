@@ -18,28 +18,36 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeStations请求参数结构体
+ * DescribeAuthInfo请求参数结构体
  *
- * @method integer getLimit() 获取条数，必须大于0
- * @method void setLimit(integer $Limit) 设置条数，必须大于0
- * @method integer getOffset() 获取offset (Default = 0)，Offset=Offset+Limit
- * @method void setOffset(integer $Offset) 设置offset (Default = 0)，Offset=Offset+Limit
+ * @method integer getOffset() 获取偏移量：Offset=Offset+Limit
+ * @method void setOffset(integer $Offset) 设置偏移量：Offset=Offset+Limit
+ * @method integer getLimit() 获取数据条数
+ * @method void setLimit(integer $Limit) 设置数据条数
+ * @method string getKey() 获取搜索关键字
+ * @method void setKey(string $Key) 设置搜索关键字
  */
-class DescribeStationsRequest extends AbstractModel
+class DescribeAuthInfoRequest extends AbstractModel
 {
     /**
-     * @var integer 条数，必须大于0
-     */
-    public $Limit;
-
-    /**
-     * @var integer offset (Default = 0)，Offset=Offset+Limit
+     * @var integer 偏移量：Offset=Offset+Limit
      */
     public $Offset;
 
     /**
-     * @param integer $Limit 条数，必须大于0
-     * @param integer $Offset offset (Default = 0)，Offset=Offset+Limit
+     * @var integer 数据条数
+     */
+    public $Limit;
+
+    /**
+     * @var string 搜索关键字
+     */
+    public $Key;
+
+    /**
+     * @param integer $Offset 偏移量：Offset=Offset+Limit
+     * @param integer $Limit 数据条数
+     * @param string $Key 搜索关键字
      */
     function __construct()
     {
@@ -54,12 +62,16 @@ class DescribeStationsRequest extends AbstractModel
         if ($param === null) {
             return;
         }
+        if (array_key_exists("Offset",$param) and $param["Offset"] !== null) {
+            $this->Offset = $param["Offset"];
+        }
+
         if (array_key_exists("Limit",$param) and $param["Limit"] !== null) {
             $this->Limit = $param["Limit"];
         }
 
-        if (array_key_exists("Offset",$param) and $param["Offset"] !== null) {
-            $this->Offset = $param["Offset"];
+        if (array_key_exists("Key",$param) and $param["Key"] !== null) {
+            $this->Key = $param["Key"];
         }
     }
 }
