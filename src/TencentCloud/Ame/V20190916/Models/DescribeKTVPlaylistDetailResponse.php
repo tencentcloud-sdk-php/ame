@@ -18,22 +18,26 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeLyric返回参数结构体
+ * DescribeKTVPlaylistDetail返回参数结构体
  *
- * @method Lyric getLyric() 获取歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setLyric(Lyric $Lyric) 设置歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getKTVMusicInfoSet() 获取歌曲基础信息列表
+ * @method void setKTVMusicInfoSet(array $KTVMusicInfoSet) 设置歌曲基础信息列表
+ * @method KTVPlaylistBaseInfo getPlaylistBaseInfo() 获取歌单基础信息
+ * @method void setPlaylistBaseInfo(KTVPlaylistBaseInfo $PlaylistBaseInfo) 设置歌单基础信息
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribeLyricResponse extends AbstractModel
+class DescribeKTVPlaylistDetailResponse extends AbstractModel
 {
     /**
-     * @var Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @var array 歌曲基础信息列表
      */
-    public $Lyric;
+    public $KTVMusicInfoSet;
+
+    /**
+     * @var KTVPlaylistBaseInfo 歌单基础信息
+     */
+    public $PlaylistBaseInfo;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -41,8 +45,8 @@ class DescribeLyricResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param Lyric $Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $KTVMusicInfoSet 歌曲基础信息列表
+     * @param KTVPlaylistBaseInfo $PlaylistBaseInfo 歌单基础信息
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -58,9 +62,18 @@ class DescribeLyricResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Lyric",$param) and $param["Lyric"] !== null) {
-            $this->Lyric = new Lyric();
-            $this->Lyric->deserialize($param["Lyric"]);
+        if (array_key_exists("KTVMusicInfoSet",$param) and $param["KTVMusicInfoSet"] !== null) {
+            $this->KTVMusicInfoSet = [];
+            foreach ($param["KTVMusicInfoSet"] as $key => $value){
+                $obj = new KTVMusicBaseInfo();
+                $obj->deserialize($value);
+                array_push($this->KTVMusicInfoSet, $obj);
+            }
+        }
+
+        if (array_key_exists("PlaylistBaseInfo",$param) and $param["PlaylistBaseInfo"] !== null) {
+            $this->PlaylistBaseInfo = new KTVPlaylistBaseInfo();
+            $this->PlaylistBaseInfo->deserialize($param["PlaylistBaseInfo"]);
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

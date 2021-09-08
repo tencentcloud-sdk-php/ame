@@ -18,22 +18,26 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeLyric返回参数结构体
+ * DescribeKTVPlaylists返回参数结构体
  *
- * @method Lyric getLyric() 获取歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setLyric(Lyric $Lyric) 设置歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getPlaylistBaseInfoSet() 获取推荐歌单列表
+ * @method void setPlaylistBaseInfoSet(array $PlaylistBaseInfoSet) 设置推荐歌单列表
+ * @method integer getTotalCount() 获取推荐歌单列表总数
+ * @method void setTotalCount(integer $TotalCount) 设置推荐歌单列表总数
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribeLyricResponse extends AbstractModel
+class DescribeKTVPlaylistsResponse extends AbstractModel
 {
     /**
-     * @var Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @var array 推荐歌单列表
      */
-    public $Lyric;
+    public $PlaylistBaseInfoSet;
+
+    /**
+     * @var integer 推荐歌单列表总数
+     */
+    public $TotalCount;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -41,8 +45,8 @@ class DescribeLyricResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param Lyric $Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $PlaylistBaseInfoSet 推荐歌单列表
+     * @param integer $TotalCount 推荐歌单列表总数
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -58,9 +62,17 @@ class DescribeLyricResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Lyric",$param) and $param["Lyric"] !== null) {
-            $this->Lyric = new Lyric();
-            $this->Lyric->deserialize($param["Lyric"]);
+        if (array_key_exists("PlaylistBaseInfoSet",$param) and $param["PlaylistBaseInfoSet"] !== null) {
+            $this->PlaylistBaseInfoSet = [];
+            foreach ($param["PlaylistBaseInfoSet"] as $key => $value){
+                $obj = new KTVPlaylistBaseInfo();
+                $obj->deserialize($value);
+                array_push($this->PlaylistBaseInfoSet, $obj);
+            }
+        }
+
+        if (array_key_exists("TotalCount",$param) and $param["TotalCount"] !== null) {
+            $this->TotalCount = $param["TotalCount"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

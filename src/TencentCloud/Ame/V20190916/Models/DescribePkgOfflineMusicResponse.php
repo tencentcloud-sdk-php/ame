@@ -18,22 +18,26 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeLyric返回参数结构体
+ * DescribePkgOfflineMusic返回参数结构体
  *
- * @method Lyric getLyric() 获取歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setLyric(Lyric $Lyric) 设置歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getOfflineMusicSet() 获取曲库包中不可用歌曲信息
+ * @method void setOfflineMusicSet(array $OfflineMusicSet) 设置曲库包中不可用歌曲信息
+ * @method integer getTotalCount() 获取返回总量
+ * @method void setTotalCount(integer $TotalCount) 设置返回总量
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribeLyricResponse extends AbstractModel
+class DescribePkgOfflineMusicResponse extends AbstractModel
 {
     /**
-     * @var Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @var array 曲库包中不可用歌曲信息
      */
-    public $Lyric;
+    public $OfflineMusicSet;
+
+    /**
+     * @var integer 返回总量
+     */
+    public $TotalCount;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -41,8 +45,8 @@ class DescribeLyricResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param Lyric $Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $OfflineMusicSet 曲库包中不可用歌曲信息
+     * @param integer $TotalCount 返回总量
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -58,9 +62,17 @@ class DescribeLyricResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Lyric",$param) and $param["Lyric"] !== null) {
-            $this->Lyric = new Lyric();
-            $this->Lyric->deserialize($param["Lyric"]);
+        if (array_key_exists("OfflineMusicSet",$param) and $param["OfflineMusicSet"] !== null) {
+            $this->OfflineMusicSet = [];
+            foreach ($param["OfflineMusicSet"] as $key => $value){
+                $obj = new OfflineMusicDetail();
+                $obj->deserialize($value);
+                array_push($this->OfflineMusicSet, $obj);
+            }
+        }
+
+        if (array_key_exists("TotalCount",$param) and $param["TotalCount"] !== null) {
+            $this->TotalCount = $param["TotalCount"];
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {

@@ -18,22 +18,19 @@ namespace TencentCloud\Ame\V20190916\Models;
 use TencentCloud\Common\AbstractModel;
 
 /**
- * DescribeLyric返回参数结构体
+ * DescribeMusicSaleStatus返回参数结构体
  *
- * @method Lyric getLyric() 获取歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
- * @method void setLyric(Lyric $Lyric) 设置歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+ * @method array getMusicStatusSet() 获取musicId对应歌曲状态
+ * @method void setMusicStatusSet(array $MusicStatusSet) 设置musicId对应歌曲状态
  * @method string getRequestId() 获取唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  * @method void setRequestId(string $RequestId) 设置唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
  */
-class DescribeLyricResponse extends AbstractModel
+class DescribeMusicSaleStatusResponse extends AbstractModel
 {
     /**
-     * @var Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @var array musicId对应歌曲状态
      */
-    public $Lyric;
+    public $MusicStatusSet;
 
     /**
      * @var string 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
@@ -41,8 +38,7 @@ class DescribeLyricResponse extends AbstractModel
     public $RequestId;
 
     /**
-     * @param Lyric $Lyric 歌词或者波形图详情
-注意：此字段可能返回 null，表示取不到有效值。
+     * @param array $MusicStatusSet musicId对应歌曲状态
      * @param string $RequestId 唯一请求 ID，每次请求都会返回。定位问题时需要提供该次请求的 RequestId。
      */
     function __construct()
@@ -58,9 +54,13 @@ class DescribeLyricResponse extends AbstractModel
         if ($param === null) {
             return;
         }
-        if (array_key_exists("Lyric",$param) and $param["Lyric"] !== null) {
-            $this->Lyric = new Lyric();
-            $this->Lyric->deserialize($param["Lyric"]);
+        if (array_key_exists("MusicStatusSet",$param) and $param["MusicStatusSet"] !== null) {
+            $this->MusicStatusSet = [];
+            foreach ($param["MusicStatusSet"] as $key => $value){
+                $obj = new MusicStatus();
+                $obj->deserialize($value);
+                array_push($this->MusicStatusSet, $obj);
+            }
         }
 
         if (array_key_exists("RequestId",$param) and $param["RequestId"] !== null) {
